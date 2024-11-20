@@ -6,4 +6,6 @@ import lombok.Data;
 public class FlagEntity {
     private String name;
     private String flag;
+    private String iso2;
+    private String iso3;
 }
