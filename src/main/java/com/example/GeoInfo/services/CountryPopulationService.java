@@ -2,18 +2,20 @@ package com.example.GeoInfo.services;
 
 import com.example.GeoInfo.dto.CityPopulationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+@Service
 public class CountryPopulationService {
     private final HttpClient httpClient = HttpClient.newHttpClient();
     public CityPopulationResponse getCountryPopulation() {
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://countriesnow.space/api/v0.1/countries/capital"))
+                    .uri(new URI("https://countriesnow.space/api/v0.1/countries/population/cities"))
                     .GET()
                     .build();
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
