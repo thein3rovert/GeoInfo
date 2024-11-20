@@ -18,6 +18,7 @@ public class GeoInfoApplication {
 		 //Http client for getting the request
 		HttpRequest getRequest = HttpRequest.newBuilder()
 				//.uri(new URI("https://countriesnow.space/api/v0.1/countries/capital"))
+				// Flag image
 				.uri(new URI("https://countriesnow.space/api/v0.1/countries/flag/images"))
 				.GET()
 				.build();
@@ -31,4 +32,3 @@ public class GeoInfoApplication {
 	}
 	}
 
-}
