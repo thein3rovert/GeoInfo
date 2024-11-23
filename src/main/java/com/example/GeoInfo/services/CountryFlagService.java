@@ -1,6 +1,7 @@
 package com.example.GeoInfo.services;
 
 import com.example.GeoInfo.dto.FlagResponse;
+import com.example.GeoInfo.exception.ApiException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,13 @@ public class CountryFlagService {
                     .GET()
                     .build();
             HttpResponse<String>countryFlagResponse = httpClient.send(countryFlagRequest, HttpResponse.BodyHandlers.ofString());
+            if (countryFlagResponse.statusCode() != 200) {
+                throw new ApiException(
+                        "Failed to fetch countries and capitals. HTTP Status: " + countryFlagResponse.statusCode(),
+                        countryFlagResponse.statusCode(),
+                        countryFlagResponse.body()
+                );
+            }
             FlagResponse response = objectMapper.readValue(countryFlagResponse.body(), FlagResponse.class);
             if (response.getError() == null ) {
                 System.out.println("Error from API: " + response.getError());

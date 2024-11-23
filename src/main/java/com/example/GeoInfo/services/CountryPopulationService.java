@@ -1,6 +1,7 @@
 package com.example.GeoInfo.services;
 
 import com.example.GeoInfo.dto.CityPopulationResponse;
+import com.example.GeoInfo.exception.ApiException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,13 @@ public class CountryPopulationService {
                     .GET()
                     .build();
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() != 200) {
+                throw new ApiException(
+                        "Failed to fetch countries and capitals. HTTP Status: " + response.statusCode(),
+                        response.statusCode(),
+                        response.body()
+                );
+            }
             return new ObjectMapper().readValue(response.body(), CityPopulationResponse.class);
 
         } catch (Exception e) {

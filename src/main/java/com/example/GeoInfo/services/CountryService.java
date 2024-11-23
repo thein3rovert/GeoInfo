@@ -1,6 +1,7 @@
 package com.example.GeoInfo.services;
 
 import com.example.GeoInfo.dto.CountryRequest;
+import com.example.GeoInfo.exception.ApiException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,15 +29,21 @@ public class CountryService {
                     .GET()
                     .build();
             HttpResponse<String> countriesAndCapitalResponse = httpClient.send(countriesAndCapitalRequest, HttpResponse.BodyHandlers.ofString());
+                // Check for non-200 HTTP status codes
+                if (countriesAndCapitalResponse.statusCode() != 200) {
+                    throw new ApiException(
+                            "Failed to fetch countries and capitals. HTTP Status: " + countriesAndCapitalResponse.statusCode(),
+                            countriesAndCapitalResponse.statusCode(),
+                            countriesAndCapitalResponse.body()
+                    );
+                }
             CountryRequest countryRequest =  objectMapper.readValue(countriesAndCapitalResponse.body(), CountryRequest.class);
-            if (countryRequest.getError() == null ) {
-                System.out.println("Error from API: " + countryRequest.getError());
+            if (countryRequest.getError() == null) {
+                    throw new ApiException("API returned an error: " + countryRequest.getError());
             }
-
             return countryRequest;
-        } catch(Exception e) {
-            e.printStackTrace();
-            return null;
+        } catch (Exception e) {
+            throw new ApiException("An error occurred while fetching countries and capitals: " + e.getMessage(), 500, e.toString());
         }
     }
 }
