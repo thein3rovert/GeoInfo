@@ -11,6 +11,9 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+
+import static com.example.GeoInfo.constant.Constants.CAPITAL_API_URL;
+
 @Getter
 @Service
 public class CountryService {
@@ -21,7 +24,7 @@ public class CountryService {
         public CountryRequest getAllCountriesAndCapital(){
             try{
             HttpRequest countriesAndCapitalRequest = HttpRequest.newBuilder()
-                    .uri(new URI("https://countriesnow.space/api/v0.1/countries/capital"))
+                    .uri(URI.create(CAPITAL_API_URL))
                     .GET()
                     .build();
             HttpResponse<String> countriesAndCapitalResponse = httpClient.send(countriesAndCapitalRequest, HttpResponse.BodyHandlers.ofString());
