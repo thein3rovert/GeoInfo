@@ -22,7 +22,7 @@
 
 GEOINFO is a web application built with Java, Spring Boot, and React, designed to analyze geographical data and provide insights through various indicators. It allows users to visualize historical geographical datasets and leverage them for predictive modeling.
 
-<p align="center"><img width=95% src="![HOME.png](src/main/resources/assets/HOME.png)"></p>
+<p align="center"><img width=95% src="src/main/resources/assets/HOME.png"></p>
 
 #### Project Structure
 ```text
