@@ -51,16 +51,28 @@ GEOINFO is a web application built with Java, Spring Boot, and React, designed t
 │               └── example
 │                   └── GeoInfo
 └────────────────────────GeoInfoApplicationTests.java  # Test class
-
-
 ```
-## Key Features
-- **Data Analysis:** Analyze geographical datasets for trends and insights.
-- **Predictive Modeling:** Leverage historical data to make predictions.
-- **User -Friendly Interface:** Built with React for a seamless user experience.
-- **RESTful API:** Interact with the backend using a well-defined API.
-- **Real-Time Data Visualization:** Visualize data dynamically.
 
+## Frontend Repository
+
+The frontend for this project is located in a separate repository. You can access it by clicking the link below:
+
+[Frontend Repository](https://github.com/your-username/frontend-repo-name)
+
+Please follow the instructions in the frontend repository's README to set up and run the frontend application.
+
+## Key Features
+
+- **User-Friendly Interface**: Built with React for a seamless user experience.
+- **Real-Time Data Visualization**: Visualize data dynamically.
+- **Data Analysis**: Analyze geographical datasets for trends and insights.
+- **RESTful API**: Interact with the backend using a well-defined API.
+- **Country and Capital Data**: Retrieve detailed information about countries and their capitals.
+- **City Population Statistics**: Access population data for various cities.
+- **Country Flags**: Fetch images of country flags.
+- **Modular Architecture**: Clean separation of concerns with models, DTOs, and services.
+- **Error Handling**: Comprehensive error management to ensure smooth API interactions.
+---
 ## How to Use
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Maven](https://maven.apache.org/download.cgi) installed on your computer. From your command line:
 
